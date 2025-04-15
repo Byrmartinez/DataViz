@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Dashboard interactivo de visualización de datos en tiempo real. Analiza estadísticas, tendencias y métricas de usuarios, ventas e ingresos con gráficos dinámicos.">
+    <meta name="keywords"
+        content="dashboard, visualización de datos, analítica, tendencias, estadísticas, gráficos interactivos, dataviz, SmartChoiceLabs">
+    <meta name="author" content="SmartChoiceLabs">
+    <title>DataViz Dashboard | SmartChoiceLabs</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body data-bs-theme="light">
+
+    <!-- Navbar Sticky -->
+    <nav class="navbar navbar-expand-lg sticky-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#home">DataViz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview">Vista General</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#analytics">Analítica</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#trends">Tendencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <button id="themeToggle" class="btn btn-sm ms-2">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="py-5">
+        <div class="container px-5">
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bold">Dashboard de Visualización de Datos</h1>
+                        <p class="lead">Una plataforma interactiva para explorar y analizar datos en tiempo real</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-5 section-bg">
+        <div class="container px-5">
+            <h2 class="text-center mb-5">Vista General</h2>
+            <p class="text-center mb-4">Haz clic en cualquier tarjeta para ver datos detallados</p>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 clickable-card" data-card-id="users">
+                        <div class="card-body text-center">
+                            <div class="stat-icon"><i class="fas fa-users fa-3x"></i></div>
+                            <h3 class="card-title mt-3">8,942</h3>
+                            <p class="card-text">Usuarios Activos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 clickable-card" data-card-id="revenue">
+                        <div class="card-body text-center">
+                            <div class="stat-icon"><i class="fas fa-chart-line fa-3x"></i></div>
+                            <h3 class="card-title mt-3">$12.5M</h3>
+                            <p class="card-text">Ingresos</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 clickable-card" data-card-id="sales">
+                        <div class="card-body text-center">
+                            <div class="stat-icon"><i class="fas fa-shopping-cart fa-3x"></i></div>
+                            <h3 class="card-title mt-3">25,642</h3>
+                            <p class="card-text">Ventas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100 clickable-card" data-card-id="countries">
+                        <div class="card-body text-center">
+                            <div class="stat-icon"><i class="fas fa-globe fa-3x"></i></div>
+                            <h3 class="card-title mt-3">106</h3>
+                            <p class="card-text">Países</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Analytics Section -->
+    <section id="analytics" class="py-5">
+        <div class="container px-5">
+            <h2 class="text-center mb-5">Analítica</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Ventas Mensuales</div>
+                        <div class="card-body">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Distribución de Usuarios</div>
+                        <div class="card-body">
+                            <canvas id="usersChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trends Section -->
+    <section id="trends" class="py-5 section-bg">
+        <div class="container px-5">
+            <h2 class="text-center mb-5">Tendencias</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Productos Más Vendidos</div>
+                        <div class="card-body">
+                            <div class="progress-container">
+                                <!-- Las barras de progreso se generarán dinámicamente con JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Rendimiento Regional</div>
+                        <div class="card-body">
+                            <canvas id="regionsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container px-5">
+            <h2 class="text-center mb-5">Acerca del Proyecto</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>Este dashboard de visualización de datos es un proyecto de muestra diseñado para
+                                demostrar mis habilidades en:</p>
+                            <ul>
+                                <li>Desarrollo front-end con HTML, CSS y JavaScript</li>
+                                <li>Implementación de Bootstrap para diseño responsivo</li>
+                                <li>Creación de interfaces de usuario interactivas</li>
+                                <li>Visualización de datos con Chart.js</li>
+                                <li>Implementación de modo claro/oscuro</li>
+                                <li>Navegación fluida con navbar sticky</li>
+                            </ul>
+                            <p>Los datos mostrados son ficticios y se utilizan únicamente con fines demostrativos.</p>
+                            <p>Esta página La publiqué con GitHub Pages como parte de mi portfolio.</p>
+                            <p> Si estás viendo esto, ¡gracias por tomarte el tiempo! 🚀</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>&copy; <span id="year"></span> SmartChoiceLabs. Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle con Popper -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+    <!-- Chart.js para gráficos -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+    <!-- Script personalizado -->
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,245 @@
+/* Variables para modo claro */
+:root {
+    --primary-color: #4e73df;
+    --secondary-color: #858796;
+    --success-color: #1cc88a;
+    --bg-color: #f8f9fc;
+    --card-bg: #ffffff;
+    --text-color: #5a5c69;
+    --border-color: #e3e6f0;
+    --header-bg: #ffffff;
+    --section-bg: #f8f9fc;
+    --navbar-bg: #ffffff;
+    --footer-bg: #f8f9fc;
+}
+
+/* Variables para modo oscuro */
+[data-bs-theme="dark"] {
+    --primary-color: #6e8fff;
+    --secondary-color: #adb5bd;
+    --success-color: #3cd9b0;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #2d2d2d;
+    --header-bg: #1e1e1e;
+    --section-bg: #181818;
+    --navbar-bg: #1e1e1e;
+    --footer-bg: #121212;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+/* Estilos para el Navbar */
+#mainNav {
+    background-color: var(--navbar-bg);
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Secciones */
+section {
+    padding: 5rem 0;
+}
+
+.section-bg {
+    background-color: var(--section-bg);
+}
+
+/* Tarjetas */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 0.35rem;
+    box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+    background-color: var(--card-bg);
+    transition: all 0.3s ease;
+}
+
+.card-header {
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+/* Stat Cards */
+.stat-icon {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Botón de cambio de tema */
+#themeToggle {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+    color: var(--primary-color);
+}
+
+/* Barras de progreso */
+.progress {
+    height: 1.5rem;
+    background-color: var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--text-color);
+    padding: 2rem 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    color: var(--primary-color);
+}
+
+/* Animaciones y transiciones */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    section {
+        padding: 3rem 0;
+    }
+
+    .social-icon {
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* Estilos para tarjetas interactivas */
+.clickable-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.clickable-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.3);
+}
+
+.active-card {
+    border-color: var(--primary-color);
+    transform: translateY(-7px);
+    box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.3);
+}
+
+/* Animación para transición de gráficos */
+canvas {
+    transition: opacity 0.3s ease;
+}
+
+/* Tooltip mejorado para las tarjetas */
+.clickable-card:after {
+    content: "Clic para ver detalles";
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.clickable-card:hover:after {
+    opacity: 1;
+}
+
+/* Indicador visual para destacar que está activa */
+.clickable-card.active-card:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--primary-color);
+}
+
+/* Efecto de pulso para la tarjeta activa */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(78, 115, 223, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(78, 115, 223, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(78, 115, 223, 0);
+    }
+}
+
+.active-card {
+    animation: pulse 2s infinite;
+}
+
+/* Transición más suave para las barras de progreso */
+.progress-bar {
+    transition: width 1s ease-out;
+}
+
+/* Mejora en la responsividad */
+@media (max-width: 768px) {
+    .clickable-card:after {
+        display: none;
+    }
+
+    .clickable-card.active-card:before {
+        display: none;
+    }
+}
